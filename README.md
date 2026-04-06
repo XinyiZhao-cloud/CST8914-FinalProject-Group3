@@ -6,7 +6,7 @@
 - [ ] 2- Layout design (15 pts)
 - [ ] Responsive design.
 - [ ] User-Friendly design and colour contrasts. (5 pts).
-- [ ] [ ] 3- HTML semantics (20 pts)
+- [ ] 3- HTML semantics (20 pts)
 - [ ] Page structure.
 - [ ] Content and headings.
 - [ ] 4- Interactive components (35 pts)
