@@ -1,0 +1,33 @@
+# --- OS files (Mac + Windows) ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Logs ---
+*.log
+
+# --- Environment variables ---
+.env
+.env.*
+
+# --- IDE / Editors ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Temporary files ---
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# --- Dependency folders (if added later) ---
+node_modules/
+
+# --- Build outputs (if tools are added later) ---
+dist/
+build/
+
+# --- Cache ---
+.cache/
