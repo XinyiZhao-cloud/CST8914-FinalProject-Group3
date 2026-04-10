@@ -1,0 +1,73 @@
+/* anchor acrolling */
+html {
+  scroll-padding-top: 70px;
+}
+
+/* nav and footer */
+.navbar {
+  color: #FFF;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  background-color: white;
+  max-height: 40px;
+  border-radius: 4px;
+}
+
+.navbar-dark .navbar-nav .nav-link.customized-link{
+  color: #CCC;
+}
+.navbar-dark .navbar-nav .nav-link.customized-link:hover {
+  color: #FFF;
+}
+
+.footer {
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+/* nav and footer end */
+
+/* overrride Bootstrtap to pass WCAG */
+a {
+  color: #0056b3;
+}
+
+.btn-primary {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  color: #ffffff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #003f88;
+  border-color: #003f88;
+}
+/* Bootstrap pass WCAG end */
+
+
+/* if useful? */
+h1 {
+  font-size: 1.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .row {
+    margin-bottom: 1rem;
+  }
+}

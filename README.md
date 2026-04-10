@@ -37,9 +37,9 @@ Person 3: Sara Mirzaeipouynak
 - [ ] User notifications (thank you/errors)
 
 Person 4: Bosi Chen
-- [ ] Responsive layout
-- [ ] User-friendly design and colour contrast
-- [ ] HTML semantics: page structure, content, and headings
+- [x] Responsive layout
+- [x] User-friendly design and colour contrast
+- [x] HTML semantics: page structure, content, and headings
 
 ### Workflow:
 Person 4 (Structure + Layout)  
