@@ -3,6 +3,11 @@ html {
   scroll-padding-top: 70px;
 }
 
+/* Added top padding so SPA views are not tucked under the fixed navbar */
+body {
+  padding-top: 70px;
+}
+
 /* nav and footer */
 .navbar {
   color: #FFF;
@@ -24,6 +29,13 @@ html {
 }
 .navbar-dark .navbar-nav .nav-link.customized-link:hover {
   color: #FFF;
+}
+
+/* Highlight the current SPA page in the nav for Person 1 active state support */
+.navbar-dark .navbar-nav .nav-link.customized-link[aria-current="page"] {
+  color: #FFF;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .footer {
@@ -60,6 +72,17 @@ h1 {
 
 .hidden {
   display: none;
+}
+
+/* Hide inactive SPA views so only the current page is shown */
+.spa-view[hidden] {
+  display: none !important;
+}
+
+/* Keep the JS focus target visible when a view heading receives focus */
+.spa-view > .h1:focus {
+  outline: 3px solid #0056b3;
+  outline-offset: 4px;
 }
 
 @media (min-width: 768px) {
