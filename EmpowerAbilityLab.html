@@ -155,15 +155,24 @@
           </div>
         </div>
 
-        <!-- The form feedback behavior here, should be hidden -->
-        <div role="alert" id="thankYouNote" hidden>
+        <!-- The form feedback behavior here should be hidden -->
+        <!------------------ S.M ------------------>
+        <!-- Success message is focusable so keyboard users land on it after submit -->
+        <!------------------ S.M ------------------>
+        <div role="status" id="thankYouNote" class="alert alert-success" hidden tabindex="-1" aria-atomic="true">
           <p>Thank you for scheduling a call</p>
         </div>
-        <div role="alert" id="errorNote" hidden>
-          <p>Error</p>
+        <!------------------ S.M ------------------>
+        <!-- Error summary is focusable and announced when validation fails -->
+        <!------------------ S.M ------------------>
+        <div role="alert" id="errorNote" class="alert alert-danger" hidden tabindex="-1" aria-atomic="true">
+          <p id="errorMessage">Please fix the errors below.</p>
         </div>
 
-        <form>
+        <!------------------ S.M ------------------>
+        <!-- novalidate lets custom JavaScript handle accessible validation -->
+        <!------------------ S.M ------------------>
+        <form id="scheduleForm" novalidate>
           <div class="form-group row">
             <label for="inputBusinessName" class="col-sm-2 col-form-label">Business Name</label>
             <div class="col-sm-10">
@@ -173,21 +182,32 @@
           <div class="form-group row">
             <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
             <div class="col-sm-10">
-              <input type="tel" class="form-control" id="inputPhoneNumber" placeholder="613-123-1234">
+              <!------------------ S.M ------------------>
+              <!-- Phone field points to its own validation message -->
+              <!------------------ S.M ------------------>
+              <input type="tel" class="form-control" id="inputPhoneNumber" placeholder="613-123-1234" aria-describedby="phoneError">
+              <p id="phoneError" class="text-danger mt-1" hidden></p>
             </div>
           </div>
           <div class="form-group row">
             <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="inputEmail" placeholder="example@mail.com" required>
+              <!------------------ S.M ------------------>
+              <!-- Email field points to its own validation message -->
+              <!------------------ S.M ------------------>
+              <input type="email" class="form-control" id="inputEmail" placeholder="example@mail.com" required aria-describedby="emailError">
+              <p id="emailError" class="text-danger mt-1" hidden></p>
             </div>
           </div>
-          <fieldset class="form-group">
+          <!------------------ S.M ------------------>
+          <!-- Fieldset keeps the radio options semantic and links to a group error -->
+          <!------------------ S.M ------------------>
+          <fieldset class="form-group" aria-describedby="topicError">
             <legend class="col-form-label pt-0">What would you like to talk about</legend>
             <div class="row">
               <div class="col-sm-10">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Awareness lab days and workshops">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Awareness lab days and workshops" required>
                   <label class="form-check-label" for="gridRadios1">
                     Awareness lab days and workshops
                   </label>
@@ -202,7 +222,8 @@
                   name="gridRadios" 
                   id="gridRadios2" 
                   value="Invite a speaker with disabilities to your event"
-                  aria-controls="eventDetailsGroup" >
+                  aria-controls="eventDetailsGroup"
+                  aria-expanded="false" >
 
                   <label class="form-check-label" for="gridRadios2">
                     Invite a speaker with disabilities to your event
@@ -214,17 +235,28 @@
                     Usability testing
                   </label>
                 </div>
+                <!------------------ S.M ------------------>
+                <!-- Group-level radio error -->
+                <!------------------ S.M ------------------>
+                <p id="topicError" class="text-danger mt-2" hidden></p>
               </div>
             </div>
           </fieldset>
 
           <!-- hidden from group -->
-          <div class="form-group row" id="eventDetailsGroup" hidden>
+          <!------------------ S.M ------------------>
+          <!-- Conditional details area stays hidden until the speaker option is selected -->
+          <!------------------ S.M ------------------>
+          <div class="form-group row" id="eventDetailsGroup" hidden aria-hidden="true">
             <label for="eventDetails" class="col-sm-2 col-form-label">
               Please tell us about your event
             </label>
             <div class="col-sm-10">
-              <textarea class="form-control" id="eventDetails" name="eventDetails" rows="4"></textarea>
+              <!------------------ S.M ------------------>
+              <!-- Conditional textarea points to its own validation message -->
+              <!------------------ S.M ------------------>
+              <textarea class="form-control" id="eventDetails" name="eventDetails" rows="4" aria-describedby="eventDetailsError"></textarea>
+              <p id="eventDetailsError" class="text-danger mt-1" hidden></p>
             </div>
           </div>
 
@@ -257,6 +289,9 @@
      <p>© Copyright Empower Ability Labs Inc 2023. All rights reserved. </p>
     </footer>
 
+    <!------------------ S.M ------------------>
+    <!-- Load the matching JavaScript file for this page -->
+    <!------------------ S.M ------------------>
     <script src="EmpowerAbilityLab.js"></script>
   </body>
 </html>
