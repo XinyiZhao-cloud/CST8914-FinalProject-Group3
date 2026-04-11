@@ -14,10 +14,10 @@
 - [x] Lightbox/Modal.
 - [x] Switch.
 - [x] Show/Hide (form - Tell us about your event).
-- [ ] 5- Web form (30 pts)
-- [ ] Web form keyboard accessibility and semantics.
-- [ ] Web form error validation for required and type of fields.
-- [ ] Web form user notification (thank you and errors).
+- [x] 5- Web form (30 pts)
+- [x] Web form keyboard accessibility and semantics.
+- [x] Web form error validation for required and type of fields.
+- [x] Web form user notification (thank you and errors).
 
 ### Distribution: 
 Person 1: Yiming He
@@ -32,9 +32,9 @@ Person 2: Xinyi Zhao
 - [x] Show/Hide form (“Tell us about your event”)
 
 Person 3: Sara Mirzaeipouynak
-- [ ] Web form accessibility and semantics
-- [ ] Error validation
-- [ ] User notifications (thank you/errors)
+- [x] Web form accessibility and semantics
+- [x] Error validation
+- [x] User notifications (thank you/errors)
 
 Person 4: Bosi Chen
 - [x] Responsive layout
