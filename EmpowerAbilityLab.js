@@ -116,12 +116,13 @@ document.addEventListener("DOMContentLoaded", () => {
     renderRoute({ shouldFocus: true });
   });
 
-  // Default to Home if there is no valid hash route yet.
+  // On the first load, normalize the URL to #home if needed,
+  // but do not trigger heading focus. This keeps the first Tab in the navbar.
   if (!window.location.hash || !routes[window.location.hash.replace("#", "").toLowerCase()]) {
-    window.location.hash = "#home";
-  } else {
-    renderRoute();
+    history.replaceState(null, "", `${window.location.pathname}#home`);
   }
+
+  renderRoute({ shouldFocus: false });
 
   // Modal elements
   // Finds the button that opens the modal.
