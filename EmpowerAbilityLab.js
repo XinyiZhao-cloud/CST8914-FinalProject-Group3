@@ -232,7 +232,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const speakerRadio = document.getElementById("gridRadios2");
   const topicRadios = document.querySelectorAll('input[name="gridRadios"]');
   const eventDetailsGroup = document.getElementById("eventDetailsGroup");
+  const eventDetails = document.getElementById("eventDetails");
 
+  // -------------------- S.M --------------------
+  // Keep the conditional textarea visibility and accessibility state in sync.
+  // -------------------- S.M --------------------
   // Show the event details field only when the speaker option is selected
   function updateEventDetailsVisibility() {
     if (!speakerRadio || !eventDetailsGroup) {
@@ -241,6 +245,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const shouldShow = speakerRadio.checked;
     eventDetailsGroup.hidden = !shouldShow;
+    eventDetailsGroup.setAttribute("aria-hidden", String(!shouldShow));
+    speakerRadio.setAttribute("aria-expanded", String(shouldShow));
+
+    // -------------------- S.M --------------------
+    // The textarea becomes required only when it is displayed.
+    // -------------------- S.M --------------------
+    if (eventDetails) {
+      eventDetails.required = shouldShow;
+    }
   }
 
   topicRadios.forEach((radio) => {
@@ -287,5 +300,194 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Set the initial visible text on load page 
     updateSwitchUI();
+  }
+
+  // ====================    S.M   ====================
+  // ================= FORM VALIDATION ================
+  // ====================    S.M   ====================
+  const form = document.getElementById("scheduleForm");
+  const emailInput = document.getElementById("inputEmail");
+  const phoneInput = document.getElementById("inputPhoneNumber");
+  const radios = document.querySelectorAll('input[name="gridRadios"]');
+  const errorNote = document.getElementById("errorNote");
+  const thankYouNote = document.getElementById("thankYouNote");
+  const errorMessage = document.getElementById("errorMessage");
+  const emailError = document.getElementById("emailError");
+  const phoneError = document.getElementById("phoneError");
+  const topicError = document.getElementById("topicError");
+  const eventDetailsError = document.getElementById("eventDetailsError");
+
+  // -------------------- S.M --------------------
+  // Clear old validation state before each submit attempt.
+  // -------------------- S.M --------------------
+  function clearInlineError(input, messageElement) {
+    if (input) {
+      input.removeAttribute("aria-invalid");
+    }
+
+    if (messageElement) {
+      messageElement.hidden = true;
+      messageElement.textContent = "";
+    }
+  }
+
+  // -------------------- S.M --------------------
+  // Mark a field invalid and reveal the matching error text.
+  // -------------------- S.M --------------------
+  function showInlineError(input, messageElement, message) {
+    if (input) {
+      input.setAttribute("aria-invalid", "true");
+    }
+
+    if (messageElement) {
+      messageElement.textContent = message;
+      messageElement.hidden = false;
+    }
+  }
+
+  // -------------------- S.M --------------------
+  // Move keyboard focus to the first invalid field or group after validation fails.
+  // -------------------- S.M --------------------
+  function focusFirstErrorField() {
+    const selectedRadio = document.querySelector('input[name="gridRadios"]:checked');
+
+    if (emailInput && emailInput.getAttribute("aria-invalid") === "true") {
+      emailInput.focus();
+      return;
+    }
+
+    if (phoneInput && phoneInput.getAttribute("aria-invalid") === "true") {
+      phoneInput.focus();
+      return;
+    }
+
+    if (!selectedRadio && radios.length > 0) {
+      radios[0].focus();
+      return;
+    }
+
+    if (eventDetails && eventDetails.getAttribute("aria-invalid") === "true") {
+      eventDetails.focus();
+    }
+  }
+
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const errors = [];
+      const selectedRadio = document.querySelector('input[name="gridRadios"]:checked');
+      const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+
+      // -------------------- S.M --------------------
+      // Reset notifications and inline errors before validating again.
+      // -------------------- S.M --------------------
+      if (errorNote) {
+        errorNote.hidden = true;
+      }
+      if (thankYouNote) {
+        thankYouNote.hidden = true;
+      }
+      if (errorMessage) {
+        errorMessage.textContent = "Please fix the errors below.";
+      }
+
+      clearInlineError(emailInput, emailError);
+      clearInlineError(phoneInput, phoneError);
+      clearInlineError(eventDetails, eventDetailsError);
+
+      if (topicError) {
+        topicError.hidden = true;
+        topicError.textContent = "";
+      }
+
+      radios.forEach((radio) => {
+        radio.removeAttribute("aria-invalid");
+      });
+
+      // -------------------- S.M --------------------
+      // Email is required and must be a valid email type.
+      // -------------------- S.M --------------------
+      if (emailInput && !emailInput.value.trim()) {
+        errors.push("Email is required.");
+        showInlineError(emailInput, emailError, "Email is required.");
+      } else if (emailInput && !emailInput.checkValidity()) {
+        errors.push("Enter a valid email address.");
+        showInlineError(emailInput, emailError, "Enter a valid email address.");
+      }
+
+      // -------------------- S.M --------------------
+      // Phone is optional, but if present it must match the expected pattern.
+      // -------------------- S.M --------------------
+      if (phoneInput && phoneInput.value.trim() && !phonePattern.test(phoneInput.value.trim())) {
+        errors.push("Phone must be in format 613-123-1234.");
+        showInlineError(phoneInput, phoneError, "Phone must be in format 613-123-1234.");
+      }
+
+      // -------------------- S.M --------------------
+      // One topic must be selected.
+      // -------------------- S.M --------------------
+      if (!selectedRadio) {
+        errors.push("Please select a topic.");
+        radios.forEach((radio) => {
+          radio.setAttribute("aria-invalid", "true");
+        });
+
+        if (topicError) {
+          topicError.textContent = "Please select a topic.";
+          topicError.hidden = false;
+        }
+      }
+
+      // -------------------- S.M --------------------
+      // Event details are required only for the speaker option.
+      // -------------------- S.M --------------------
+      if (selectedRadio && selectedRadio.id === "gridRadios2" && eventDetails && !eventDetails.value.trim()) {
+        errors.push("Please describe your event.");
+        showInlineError(eventDetails, eventDetailsError, "Please describe your event.");
+      }
+
+      // -------------------- S.M --------------------
+      // Error summary is announced and keyboard focus moves to the first error.
+      // -------------------- S.M --------------------
+      if (errors.length > 0) {
+        if (errorMessage) {
+          errorMessage.textContent = errors.join(" ");
+        }
+        if (errorNote) {
+          errorNote.hidden = false;
+          // -------------------- S.M --------------------
+          // Bring the error summary into view before moving focus to the first invalid field.
+          // -------------------- S.M --------------------
+          errorNote.scrollIntoView({ block: "nearest" });
+        }
+        setTimeout(() => {
+          focusFirstErrorField();
+        }, 0);
+        return;
+      }
+
+      // -------------------- S.M --------------------
+      // Success clears the form and announces the thank-you message.
+      // -------------------- S.M --------------------
+      form.reset();
+      updateEventDetailsVisibility();
+
+      if (emailSwitch) {
+        emailSwitch.setAttribute("aria-checked", "false");
+        updateSwitchUI();
+      }
+
+      if (thankYouNote) {
+        thankYouNote.hidden = false;
+        // -------------------- S.M --------------------
+        // Bring the success message into view before moving focus to it.
+        // -------------------- S.M --------------------
+        thankYouNote.scrollIntoView({ block: "nearest" });
+        setTimeout(() => {
+          thankYouNote.focus();
+        }, 0);
+      }
+    });
   }
 });
