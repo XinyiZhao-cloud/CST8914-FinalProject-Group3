@@ -11,9 +11,9 @@
 - [ ] Content and headings.
 - [ ] 4- Interactive components (35 pts)
 - [ ] Navigation bar. (5pts)
-- [ ] Lightbox/Modal.
-- [ ] Switch.
-- [ ] Show/Hide (form - Tell us about your event).
+- [x] Lightbox/Modal.
+- [x] Switch.
+- [x] Show/Hide (form - Tell us about your event).
 - [ ] 5- Web form (30 pts)
 - [ ] Web form keyboard accessibility and semantics.
 - [ ] Web form error validation for required and type of fields.
@@ -27,9 +27,9 @@ Person 1: Yiming He
 - [ ] Navigation bar
 
 Person 2: Xinyi Zhao
-- [ ] Lightbox/Modal
-- [ ] Switch
-- [ ] Show/Hide form (“Tell us about your event”)
+- [x] Lightbox/Modal
+- [x] Switch
+- [x] Show/Hide form (“Tell us about your event”)
 
 Person 3: Sara Mirzaeipouynak
 - [ ] Web form accessibility and semantics

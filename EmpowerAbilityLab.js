@@ -122,4 +122,170 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     renderRoute();
   }
+
+  // Modal elements
+  // Finds the button that opens the modal.
+  const openCommunityModal = document.getElementById("openCommunityModal");
+  // Finds the modal container and content elements.
+  const communityModal = document.getElementById("communityModal");
+  // Finds the actual dialog box inside the modal overlay.
+  const communityModalContent = communityModal
+    ? communityModal.querySelector(".custom-modal-content")
+    : null;
+  // Finds the button that closes the modal.
+  const closeCommunityModal = document.getElementById("closeCommunityModal");
+  // Track the element that was focused before opening the modal so we can return focus to it when the modal closes.
+  let previouslyFocusedElement = null;
+
+  // Helper function to get all focusable elements within a container for focus trapping.
+  function getFocusableElements(container) {
+    return Array.from(
+      container.querySelectorAll(
+        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    );
+  }
+
+  // Open the modal, prevent background scrolling, and move focus to the dialog content.
+  function openModal() {
+    if (!communityModal || !communityModalContent) {
+      return;
+    }
+
+    // Store the currently focused element so we can restore focus to it when the modal closes.
+    previouslyFocusedElement = document.activeElement;
+    communityModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    communityModalContent.focus();
+  }
+
+  // Close the modal, restore background scrolling, and return focus to the previously focused element.
+  function closeModal() {
+    if (!communityModal) {
+      return;
+    }
+
+    // Hide the modal and allow the page to scroll again.
+    communityModal.hidden = true;
+    document.body.style.overflow = "";
+
+    // Restore focus to the element that was focused before the modal opened, if it exists.
+    if (previouslyFocusedElement) {
+      previouslyFocusedElement.focus();
+    }
+  }
+
+  // Add event listeners for opening and closing the modal, as well as handling clicks outside the modal content and keyboard navigation for accessibility.
+  if (openCommunityModal) {
+    openCommunityModal.addEventListener("click", openModal);
+  }
+
+  // Close the modal when the close button is clicked
+  if (closeCommunityModal) {
+    closeCommunityModal.addEventListener("click", closeModal);
+  }
+
+  // Close the modal when clicking outside the modal content or pressing the Escape key, and trap focus within the modal when it's open
+  if (communityModal && communityModalContent) {
+    communityModal.addEventListener("click", (event) => {
+      if (event.target === communityModal) {
+        closeModal();
+      }
+    });
+
+    // Handle keyboard navigation for accessibility, including closing the modal with Escape and trapping focus within the modal when it's open
+    communityModal.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeModal();
+        return;
+      }
+
+      // Trap focus within the modal when it's open by handling Tab and Shift+Tab key presses
+      if (event.key === "Tab") {
+        const focusableElements = getFocusableElements(communityModalContent);
+
+        // If there are no focusable elements, prevent Tab from doing anything to avoid focus leaving the modal
+        if (focusableElements.length === 0) {
+          event.preventDefault();
+          return;
+        }
+
+        // Determine the first and last focusable elements in the modal content for focus trapping.
+        const firstElement = focusableElements[0];
+        // If there are multiple focusable elements and the last one will be used to loop back to the first when Shift+Tab is pressed on the first element
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        // If Shift+Tab is pressed while focus is on the first element, move focus to the last element. If Tab is pressed while focus is on the last element, move focus back to the first element
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    });
+  }
+
+  // Show or hide "Please tell us about your event"
+  const speakerRadio = document.getElementById("gridRadios2");
+  const topicRadios = document.querySelectorAll('input[name="gridRadios"]');
+  const eventDetailsGroup = document.getElementById("eventDetailsGroup");
+
+  // Show the event details field only when the speaker option is selected
+  function updateEventDetailsVisibility() {
+    if (!speakerRadio || !eventDetailsGroup) {
+      return;
+    }
+
+    const shouldShow = speakerRadio.checked;
+    eventDetailsGroup.hidden = !shouldShow;
+  }
+
+  topicRadios.forEach((radio) => {
+    radio.addEventListener("change", updateEventDetailsVisibility);
+  });
+
+  updateEventDetailsVisibility();
+
+  // Finds the switch button and the visible On/Off text inside it
+  const emailSwitch = document.getElementById("emailSwitch");
+  const switchText = emailSwitch ? emailSwitch.querySelector(".switch-text") : null;
+
+  	// checks switch exists
+  function updateSwitchUI() {
+    if (!emailSwitch || !switchText) {
+      return;
+    }
+    // reads aria - checked	and	updates visible text to On or Off
+    const isChecked = emailSwitch.getAttribute("aria-checked") === "true";
+    switchText.textContent = isChecked ? "On" : "Off";
+  }
+
+  // Check swicth exists and get current state 
+  function toggleEmailSwitch() {
+    if (!emailSwitch) {
+      return;
+    }
+    // updates visible UI test and aria - checked to reflect new state
+    const isChecked = emailSwitch.getAttribute("aria-checked") === "true";
+    emailSwitch.setAttribute("aria-checked", String(!isChecked));
+    updateSwitchUI();
+  }
+
+  if (emailSwitch) {
+    emailSwitch.addEventListener("click", toggleEmailSwitch);
+
+    // Keyboard users can toggle it with Space and Enter 
+    emailSwitch.addEventListener("keydown", (event) => {
+      if (event.key === " " || event.key === "Enter") {
+        event.preventDefault();
+        toggleEmailSwitch();
+      }
+    });
+
+    // Set the initial visible text on load page 
+    updateSwitchUI();
+  }
 });
