@@ -181,6 +181,7 @@ h1 {
 /* Adding this custom class to style the modal button */
 .btn-custom {
   color: rgb(0, 8, 255);
+  font-weight: bold;
   border-color: rgb(0, 8, 255);
 }
 
