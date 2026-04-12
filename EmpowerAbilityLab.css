@@ -25,7 +25,7 @@ body {
 }
 
 .navbar-dark .navbar-nav .nav-link.customized-link{
-  color: #FFF;
+  color: #CCC;
 }
 .navbar-dark .navbar-nav .nav-link.customized-link:hover {
   color: #FFF;
@@ -176,4 +176,15 @@ h1 {
 
 .email-switch[aria-checked="true"] .switch-thumb {
   transform: translateX(22px);
+}
+
+/* Adding this custom class to style the modal button */
+.btn-custom {
+  color: rgb(0, 8, 255);
+  border-color: rgb(0, 8, 255);
+}
+
+.btn-custom:hover {
+  background-color: rgb(0, 8, 255);
+  color: #fff;
 }
