@@ -16,11 +16,11 @@
   <body>
     <header>
       <!-- Main nav has an accessible name for screen reader users -->
-      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" aria-label="Main"> <!--Changed the aria-label /S.M -->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" aria-label="Main "> <!-- Changed aria-label to "Main" that screen reader wont announce Main navigation navigation S.M -->
         <div class="container-fluid">
           <!-- Brand link returns users to the Home view -->
           <a class="navbar-brand" href="#home">
-            <img src="images/empowerabilitylabslogo.png" alt="Empower Ability Labs Logo" class="logo" />
+            <img src="images/empowerabilitylabslogo.png" alt="Empower Ability Labs " class="logo" /> <!-- Removed the logo from alt text /S.M -->
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,31 +53,32 @@
         <p>Empower Ability Labs is a hub for learning and empathy-building.  We are on a mission to foster understanding and promote inclusive digital experiences for all. We offer a range of services designed to promote accessibility awareness, drive inclusivity, and enhance the user experience. And help you find answers on How do people with disabilities use technology and navigate the digital world? What tools do they employ?</p>
         <!-- Changed <h2>Meet the Empower Community!</h2> to real button that opens the modal -->
          <!-- Trigger aria-haspopup="dialog" to indicate it opens a dialog and aria-controls points to the modal container -->
+          <!--Added btn-custom class S.M -->
         <button type="button" 
                 id="openCommunityModal" 
-                class="btn btn-outline-primary my-3" 
+                class="btn btn-outline-primary btn-custom  my-3" 
                 aria-haspopup="dialog"
                 aria-controls="communityModal">
                 Meet the Empower Community!
         </button>
         <div class="row my-5">
           <div class="col-md-4">
-            <h3>Our Approach</h3>
+            <h2>Our Approach</h2>
             <p>Empower Ability Labs utilizes a hands-on approach to raise awareness and promote empathy. Our immersive workshops and lab days provide participants with a unique opportunity to step into the shoes of individuals with disabilities and navigate the world from their perspective.</p>
             <p><a href="https://www.google.com/search/howsearchworks/our-approach/">Learn more</a></p>
           </div>
           <div class="col-md-4">
-            <h3>Services</h3>
+            <h2>Services</h2>
             <p>Promote accessibility awareness and enhance the user experience.</p>
             <ul>
               <li>Empathy lab days and workshops</li>
-              <li>Go beyond WCAG compliance!</li>
+              <li>Go beyond Web Content Accessibility Guidelines (WCAG) compliance!</li> <!-- Added the definition for WCAG / S.M  -->
               <li>Inspirational speakers</li>
             </ul>
             <p><a href="https://www.elevenways.be/en/services">Learn more</a></p>
           </div>
           <div class="col-md-4">
-            <h3>Testimonials</h3>
+            <h2>Testimonials</h2>
             <p>Invite a speaker with disabilities to share their unique journey. This captivating addition to your upcoming event will offer insights that resonate, inspire, educate, and enrich your team’s understanding of inclusion.</p>
             <p><a href="https://dictionary.cambridge.org/us/dictionary/english/testimonial">Learn more</a></p>
           </div>
@@ -138,7 +139,7 @@
         </div>
         <div>
           <h2>Usability testing</h2>
-          <p>Go beyond WCAG! Involve individuals with disabilities in usability testing to gather valuable insights for refining product strategy and identifying accessibility concerns at an early stage when solutions are more feasible and cost-effective. You have access to a diverse community of people with disabilities, who use various assistive technologies. With technical expertise ranging from novice to expert, our community can support your product lifecycle from user research, to design, to QA.</p>
+          <p>Go beyond WCAG! Involve individuals with disabilities in usability testing to gather valuable insights for refining product strategy and identifying accessibility concerns at an early stage when solutions are more feasible and cost-effective. You have access to a diverse community of people with disabilities, who use various assistive technologies. With technical expertise ranging from novice to expert, our community can support your product lifecycle from user research, to design, to quality assurance (QA).</p> <!--Added the definition for QA / S.M -->
         </div>
       </section> 
 
@@ -155,7 +156,7 @@
           </div>
         </div>
 
-        <!-- The form feedback behavior here should be hidden -->
+        <!-- The form feedback behavior here, should be hidden -->
         <!------------------ S.M ------------------>
         <!-- Success message is focusable so keyboard users land on it after submit -->
         <!------------------ S.M ------------------>
@@ -176,7 +177,7 @@
           <div class="form-group row">
             <label for="inputBusinessName" class="col-sm-2 col-form-label">Business Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputBusinessName" placeholder="Business Name">
+              <input type="text" class="form-control" id="inputBusinessName" placeholder=" Your business name" name="businessName"> <!-- Added name attribute for better form handling  and changed the placerholder textS.M -->
             </div>
           </div>
           <div class="form-group row">
@@ -185,7 +186,7 @@
               <!------------------ S.M ------------------>
               <!-- Phone field points to its own validation message -->
               <!------------------ S.M ------------------>
-              <input type="tel" class="form-control" id="inputPhoneNumber" placeholder="613-123-1234" aria-describedby="phoneError">
+              <input type="tel" class="form-control" id="inputPhoneNumber" name="phoneNumber" placeholder="Your phone number"  aria-describedby="phoneError"> <!-- Added name attribute for better form handling  and changed the placerholder textS.M -->
               <p id="phoneError" class="text-danger mt-1" hidden></p>
             </div>
           </div>
