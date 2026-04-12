@@ -150,6 +150,7 @@
         <div class="row">
           <div class="col-md-10">
             <p>At Empower Ability Labs, we are dedicated to cultivating empathy and driving positive change through immersive experiences.  Fill out the form below and we’ll get back to you as soon as we can to schedule a call with our sales team!</p>
+            
           </div>
           <div class="col-md-2">
             <img src="images/scheduleacall.png" alt="" aria-hidden="true" />
@@ -174,6 +175,9 @@
         <!-- novalidate lets custom JavaScript handle accessible validation -->
         <!------------------ S.M ------------------>
         <form id="scheduleForm" novalidate>
+          <div class="mb-3">
+            <span>The fields marked with an asterisk (*) are required. </span>
+          </div>
           <div class="form-group row">
             <label for="inputBusinessName" class="col-sm-2 col-form-label">Business Name</label>
             <div class="col-sm-10">
@@ -191,23 +195,27 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+            <label for="inputEmail" class="col-sm-2 col-form-label"> Email <span class="text-danger" aria-label="required">*</span></label>
             <div class="col-sm-10">
               <!------------------ S.M ------------------>
               <!-- Email field points to its own validation message -->
               <!------------------ S.M ------------------>
-              <input type="email" class="form-control" id="inputEmail" placeholder="example@mail.com" required aria-describedby="emailError">
+              <input type="email" class="form-control" id="inputEmail" placeholder="example@mail.com" required aria-required="true" aria-describedby="emailError">
               <p id="emailError" class="text-danger mt-1" hidden></p>
             </div>
           </div>
           <!------------------ S.M ------------------>
           <!-- Fieldset keeps the radio options semantic and links to a group error -->
           <!------------------ S.M ------------------>
-          <fieldset class="form-group" aria-describedby="topicError">
-            <legend class="col-form-label pt-0">What would you like to talk about</legend>
+          <!-- S.M: Added aria-required and visual indicator for mandatory radio button selection -->
+          <fieldset class="form-group" aria-describedby="topicError" aria-required="true">
+            <legend class="col-form-label pt-0">What would you like to talk about <span class="text-danger" aria-label="required">*</span></legend>
             <div class="row">
               <div class="col-sm-10">
                 <div class="form-check">
+                  <!------------------ S.M ------------------>
+                  <!--  Marked as required for validation -->
+                  <!------------------ S.M ------------------>
                   <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Awareness lab days and workshops" required>
                   <label class="form-check-label" for="gridRadios1">
                     Awareness lab days and workshops
@@ -218,20 +226,25 @@
     
                   <!-- Fix the "Invite Speaker" Option radio input-->
                   <!-- aria-controls links to the controlled region -->
+                   <!------------------ S.M ------------------>
+                  <!-- Added required attribute for form validation -->
+                   <!------------------ S.M ------------------>
                   <input class="form-check-input" 
                   type="radio" 
                   name="gridRadios" 
                   id="gridRadios2" 
                   value="Invite a speaker with disabilities to your event"
                   aria-controls="eventDetailsGroup"
-                  aria-expanded="false" >
+                  aria-expanded="false"
+                  required>
 
                   <label class="form-check-label" for="gridRadios2">
                     Invite a speaker with disabilities to your event
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="Usability testing">
+                  <!-- S.M: Added required attribute for form validation -->
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="Usability testing" required>
                   <label class="form-check-label" for="gridRadios3">
                     Usability testing
                   </label>
