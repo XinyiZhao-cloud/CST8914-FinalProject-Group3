@@ -1,4 +1,9 @@
 # Empower Ability Labs – Accessible SPA
+## 👩‍💻👨‍💻 Group Members:
+Yiming He: 041282545
+Bosi Chen: 041040774
+Sara Mirzaei:  040467655
+Xinyi Zhao: 040953633
 
 ## 📌 Project Overview
 This project is a single-page application (SPA) designed to promote accessibility awareness and inclusive digital experiences. It follows **WCAG 2.1 AA** guidelines and demonstrates accessible design and interaction patterns.
