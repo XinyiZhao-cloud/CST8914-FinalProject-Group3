@@ -94,6 +94,15 @@ The project ensures:
 
 ---
 
+## 🛠️ Testing and Debugging:
+- Keyboard (Tab, Enter, Space, Esc)
+- WAVE Evaluation Tool
+- Accessibility Insights for Web
+- Browser DevTools Lighthouse
+- Screen Reader: VoiceOver (macOS) and NVDA (Windows)
+
+---
+
 ## ⚠️ Challenges & Solutions
 
 ### Challenge 1: Modal without Bootstrap JavaScript
@@ -164,3 +173,7 @@ Person 2 (Interactive UI)
         ↓  
 Person 3 (Form Logic)  
 
+--- 
+
+### AI Assistance Disclosure
+This project used ChatGPT as a supportive tool for generating formatting suggestions, improving code structure, and assisting with accessibility implementation. All final decisions, code integration, and validation were completed by the project team.
