@@ -1,30 +1,144 @@
-### ToDo List
-- [ ] 1- Single-Page App(30 pts)
-- [ ] Focus management to automatically shift to the most relevant section.
-- [ ] Unique page titles. 
-- [ ] Browser Back button in sync with browsing history. 
-- [ ] 2- Layout design (15 pts)
-- [ ] Responsive design.
-- [ ] User-Friendly design and colour contrasts. (5 pts).
-- [ ] 3- HTML semantics (20 pts)
-- [ ] Page structure.
-- [ ] Content and headings.
-- [ ] 4- Interactive components (35 pts)
-- [ ] Navigation bar. (5pts)
-- [x] Lightbox/Modal.
-- [x] Switch.
-- [x] Show/Hide (form - Tell us about your event).
-- [x] 5- Web form (30 pts)
-- [x] Web form keyboard accessibility and semantics.
-- [x] Web form error validation for required and type of fields.
-- [x] Web form user notification (thank you and errors).
+# Empower Ability Labs – Accessible SPA
+
+## 📌 Project Overview
+This project is a single-page application (SPA) designed to promote accessibility awareness and inclusive digital experiences. It follows **WCAG 2.1 AA** guidelines and demonstrates accessible design and interaction patterns.
+
+---
+
+## 🚀 Features
+
+### 1. Navigation (SPA)
+- Implemented hash-based routing (`#home`, `#services`, `#schedule`)
+- Only one view is visible at a time
+- `aria-current="page"` used for active navigation
+- Focus moves to page heading after navigation
+
+---
+
+### 2. Layout Design & Accessibility
+- Responsive layout using Bootstrap
+- Improved color contrast to meet WCAG 2.1 AA
+- Clear visual focus indicators for keyboard users
+- Accessible typography and spacing
+
+---
+
+### 3. Lightbox / Modal (Accessible Dialog)
+- Custom modal implemented **without Bootstrap JavaScript**
+- Uses:
+  - `role="dialog"`
+  - `aria-modal="true"`
+  - `aria-labelledby` and `aria-describedby`
+- Accessibility features:
+  - Focus moves into modal when opened
+  - Focus is trapped inside modal
+  - Escape key closes modal
+  - Focus returns to triggering element
+
+📖 Reference:  
+https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
+
+---
+
+### 4. Switch Component (ARIA)
+- Implemented custom switch using:
+  - `role="switch"`
+  - `aria-checked`
+- Supports:
+  - Mouse interaction
+  - Keyboard (Enter, Space)
+- Visual ON/OFF state provided
+
+📖 Reference:  
+https://www.w3.org/WAI/ARIA/apg/patterns/switch/
+
+---
+
+### 5. Conditional Form Field (Show/Hide)
+- “Tell us about your event” field:
+  - Hidden by default
+  - Appears only when “Invite a speaker” is selected
+- Improves usability by reducing unnecessary input
+
+---
+
+### 6. Web Form
+- Includes:
+  - Business Name
+  - Phone Number
+  - Email (**required**)
+  - Topic selection (radio buttons)
+- Uses semantic HTML and labels for accessibility
+- Provides feedback messages:
+  - Success message
+  - Error message
+
+---
+
+## ♿ Accessibility (WCAG 2.1 AA)
+
+The project ensures:
+- Keyboard accessibility for all interactive elements
+- Proper use of ARIA roles and attributes
+- Sufficient color contrast
+- Visible focus indicators
+- Logical focus order and navigation
+
+---
+
+## ⚙️ Technologies Used
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
+- Bootstrap (CSS only)
+
+---
+
+## ⚠️ Challenges & Solutions
+
+### Challenge 1: Modal without Bootstrap JavaScript
+- Needed to implement modal behavior manually
+
+**Solution:**
+- Managed focus manually
+- Added keyboard support (Tab, Escape)
+- Controlled visibility using JavaScript
+
+---
+
+### Challenge 2: Keyboard Accessibility
+- Ensuring all components work without a mouse
+
+**Solution:**
+- Added keyboard event listeners (Tab, Enter, Space)
+- Implemented focus management
+
+---
+
+### Challenge 3: Dynamic Form Behavior
+- Showing/hiding fields based on user selection
+
+**Solution:**
+- Used event listeners on radio inputs
+- Controlled visibility dynamically
+
+---
+
+## 📂 Project Structure
+```
+/project-root
+│── EmpowerAbilityLab.html
+│── EmpowerAbilityLab.css
+│── EmpowerAbilityLab.js
+│── /images
+```
 
 ### Distribution: 
 Person 1: Yiming He
-- [ ] Focus management
-- [ ] Unique page titles
-- [ ] Browser Back button sync
-- [ ] Navigation bar
+- [x] Focus management
+- [x] Unique page titles
+- [x] Browser Back button sync
+- [x] Navigation bar
 
 Person 2: Xinyi Zhao
 - [x] Lightbox/Modal
