@@ -1,3 +1,25 @@
+/*
+  Empower Ability Labs – Accessible SPA
+
+  Course: CST8914 – Accessible by Design
+  Assignment: Accessible SPA Project
+
+  Team Members:
+  - Bosi Chen
+  - Yiming He
+  - Xinyi Zhao
+  - Sara Mirzaeipouynak
+
+  Description:
+  This CSS file handles layout, visual design, and accessibility styling,
+  including modal, switch, and responsive design.
+
+  Accessibility:
+  Designed to meet WCAG 2.1 AA requirements:
+  - Sufficient color contrast
+  - Visible focus indicators
+  - Responsive and readable layout
+*/
 /* anchor acrolling */
 html {
   scroll-padding-top: 70px;

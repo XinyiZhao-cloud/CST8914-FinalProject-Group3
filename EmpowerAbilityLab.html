@@ -1,3 +1,36 @@
+<!--
+  Empower Ability Labs – Accessible SPA
+
+  Course: CST8914 – Accessible by Design
+  Assignment: Accessible SPA Project
+
+  Team Members:
+  - Bosi Chen
+  - Yiming He
+  - Xinyi Zhao
+  - Sara Mirzaeipouynak
+
+  Description:
+  This HTML file defines the structure of the SPA, including:
+  - Navigation and layout
+  - Accessible modal (lightbox)
+  - Accessible form with validation
+  - ARIA-based interactive components (switch, conditional field)
+
+  Accessibility:
+  Designed to meet WCAG 2.1 AA standards, including:
+  - Semantic HTML structure
+  - Proper labeling and form associations
+  - ARIA roles and attributes
+  - Keyboard accessibility support
+
+  References:
+  WAI-ARIA Authoring Practices Guide (APG)
+  https://www.w3.org/WAI/ARIA/apg/
+
+  WCAG 2.1 Guidelines
+  https://www.w3.org/WAI/standards-guidelines/wcag/
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,11 +49,12 @@
   <body>
     <header>
       <!-- Main nav has an accessible name for screen reader users -->
-      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" aria-label="Main "> <!-- Changed aria-label to "Main" that screen reader wont announce Main navigation navigation S.M -->
+       <!-- XY.Z label to Main navigation  -->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" aria-label="Main navigation"> <!-- Changed aria-label to "Main" that screen reader wont announce Main navigation navigation S.M -->
         <div class="container-fluid">
           <!-- Brand link returns users to the Home view -->
           <a class="navbar-brand" href="#home">
-            <img src="images/empowerabilitylabslogo.png" alt="Empower Ability Labs " class="logo" /> <!-- Removed the logo from alt text /S.M -->
+            <img src="images/empowerabilitylabslogo.png" alt="Empower Ability Labs Logo" class="logo" /> <!-- Removed the logo from alt text /S.M -->
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -52,7 +86,8 @@
         <h1 id="homeHeading" class="h1 my-4" tabindex="-1">Welcome to Empower Ability Labs!</h1>
         <p>Empower Ability Labs is a hub for learning and empathy-building.  We are on a mission to foster understanding and promote inclusive digital experiences for all. We offer a range of services designed to promote accessibility awareness, drive inclusivity, and enhance the user experience. And help you find answers on How do people with disabilities use technology and navigate the digital world? What tools do they employ?</p>
         <!-- Changed <h2>Meet the Empower Community!</h2> to real button that opens the modal -->
-         <!-- Trigger aria-haspopup="dialog" to indicate it opens a dialog and aria-controls points to the modal container -->
+         <!-- XY.Z -->
+        <!-- Trigger aria-haspopup="dialog" to indicate it opens a dialog and aria-controls points to the modal container -->
           <!--Added btn-custom class S.M -->
         <button type="button" 
                 id="openCommunityModal" 
@@ -85,6 +120,7 @@
         </div>
 
         <!-- Lightbox/Modal content -->
+        <!-- XY.Z -->
         <!-- Modal dialog (hidden by default) -->
     <div id="communityModal" class="custom-modal" hidden>
       <!-- aria-labelledby and aria-describedby provide accessible name and description -->
@@ -275,6 +311,9 @@
           </div>
 
           <!-- Email Switch -->
+          <!-- XY.Z -->
+          <!-- Accessible email preference switch using WAI-ARIA switch pattern -->
+          <!-- Users can toggle this using mouse, Enter, or Space keys -->
           <div class="form-group row align-items-center">
             <div class="col-sm-2">
               <span id="emailSwitchLabel">Receive emails about updates and services</span>

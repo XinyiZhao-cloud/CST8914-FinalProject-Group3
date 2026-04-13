@@ -1,3 +1,40 @@
+/**
+ * Empower Ability Labs – Accessible SPA
+ * 
+ * Course: CST8914 – Accessible by Design
+ * Assignment: Accessible SPA Project
+ * 
+ * Team Members:
+ * - Bosi Chen
+ * - Yiming He
+ * - Xinyi Zhao
+  - Sara Mirzaeipouynak
+ * 
+ * File Description:
+ * This JavaScript file implements:
+ * - SPA routing and navigation
+ * - Accessible interactive components (Modal, Switch, Show/Hide)
+ * - Form validation and user feedback
+ * 
+ * Accessibility:
+ * The project follows WCAG 2.1 AA guidelines, including:
+ * - Keyboard accessibility (Tab, Enter, Escape)
+ * - Focus management for SPA navigation and modal dialogs
+ * - Proper use of ARIA roles and attributes
+ * - Accessible form validation and error handling
+ * 
+ * References:
+ * WAI-ARIA Authoring Practices Guide (APG)
+ * Modal Dialog Pattern:
+ * https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
+ * 
+ * Switch Pattern:
+ * https://www.w3.org/WAI/ARIA/apg/patterns/switch/
+ * 
+ * General Accessibility Guidance:
+ * https://www.w3.org/WAI/standards-guidelines/wcag/
+ */
+
 function knowledgeRunner() {}
 
 knowledgeRunner();
@@ -125,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderRoute({ shouldFocus: false });
 
   // Modal elements
+  // -------------------- XY.Z --------------------
   // Finds the button that opens the modal.
   const openCommunityModal = document.getElementById("openCommunityModal");
   // Finds the modal container and content elements.
