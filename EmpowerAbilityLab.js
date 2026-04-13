@@ -285,7 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const shouldShow = speakerRadio.checked;
     eventDetailsGroup.hidden = !shouldShow;
     eventDetailsGroup.setAttribute("aria-hidden", String(!shouldShow));
-    speakerRadio.setAttribute("aria-expanded", String(shouldShow));
 
     // -------------------- S.M --------------------
     // The textarea becomes required only when it is displayed.
